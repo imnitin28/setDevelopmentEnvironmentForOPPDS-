@@ -1,25 +1,23 @@
-import Anypoint.py
-import Chrome.py   
-import Fork.py
-import IntelliJ.py
-import Slack.py
-import Postman.py
+from threading import Thread
+import subprocess
 
-python Anypoint.py & Chrome.py
-# print("Anypoint Started!!!!")
+t1 = Thread(target=subprocess.run, args=(["python", "Chrome.py"],))
+t2 = Thread(target=subprocess.run, args=(["python", "Fork.py"],))
+t3 = Thread(target=subprocess.run, args=(["python", "IntelliJ.py"],))
+t4 = Thread(target=subprocess.run, args=(["python", "Slack.py"],))
+t5 = Thread(target=subprocess.run, args=(["python", "Postman.py"],))
+t6 = Thread(target=subprocess.run, args=(["python", "Anypoint.py"],))
 
-# py Chrome.py
-# # print("Chrome Started!!!!")
+t1.start()
+t2.start()
+t3.start()
+t4.start()
+t5.start()
+t6.start()
 
-# py Fork.py
-# # print("Fork Started!!!!")
-
-# py IntelliJ.py
-# # print("IntelliJ Started!!!!")
-
-# py Slack.py
-# # print("Slack Started!!!!")
-
-# py Postman.py
-# # print("Postman Started!!!!")
-
+t1.join()
+t2.join()
+t3.join()
+t4.join()
+t5.join()
+t6.join()
